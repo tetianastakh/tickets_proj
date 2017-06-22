@@ -1,0 +1,18 @@
+<%= form_for tickets_path, method: :get do |f| %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Go", name: nil %>
+    </p>
+  <% end %>
+<ul>
+  <% @tickets.each do |ticket| %>
+    <li>
+      <p>ID: <%= ticket.uniq_identifier %></p>
+      <p>From(name): <%= ticket.from_name %></p>
+      <p>From(email): <%= ticket.from_email %></p>
+      <p>Subject: <%= ticket.subject %></p>
+      <p>Body: <%= ticket.body %></p>
+      <p><%= link_to "show", ticket_path(ticket)%></p>
+    </li>
+  <% end %>
+</ul>

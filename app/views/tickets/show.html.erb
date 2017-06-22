@@ -1,0 +1,25 @@
+<p>ID: <%= @ticket.uniq_identifier %></p>
+<p>From(name): <%= @ticket.from_name %></p>
+<p>From(email): <%= @ticket.from_email %></p>
+<p>Subject: <%= @ticket.subject %></p>
+<p>Body: <%= @ticket.body %></p>
+<p>Created: <%= @ticket.created_at %></p>
+<p>Updated: <%= @ticket.updated_at %></p>
+
+<h2>Reply:</h2>
+<% if current_user %>
+  <%= form_for [@ticket, @reply] do |f| %>
+    <p>
+      <%= f.text_area :text, placeholder: 'Enter your reply'%>
+    </p>
+    <p>
+      <%= f.submit "Save reply"%>
+    </p>
+  <% end %>
+<% end %>
+
+<% unless @ticket.replies.empty? %>
+  <ul>
+    <%= render :partial => 'replies/reply', :collection => @replies %>
+  </ul>
+<% end %>

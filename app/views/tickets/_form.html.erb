@@ -1,0 +1,15 @@
+<%= form_for [@ticket] do |f| %>
+  <p><%= f.label :from_name %>
+  <%= f.text_field :from_name %></p>
+
+  <p><%= f.label :from_email %>
+  <%= f.email_field :from_email %></p>
+
+  <p><%= f.label :subject %>
+  <%= f.text_field :subject %></p>
+
+  <p><%= f.label :body %>
+  <%= f.text_area :body %></p>
+
+  <%= f.submit "Submit the ticket" %>
+<% end %>
